@@ -1,9 +1,20 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
+    alias(libs.plugins.kotlin.serialization)
+}
+
+val localProps = Properties()
+val localPropertiesFile = File(rootProject.rootDir,"local.properties")
+if (localPropertiesFile.exists() && localPropertiesFile.isFile) {
+    localPropertiesFile.inputStream().use {
+        localProps.load(it)
+    }
 }
 
 android {
@@ -27,21 +38,29 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            buildConfigField("String", "API_KEY", localProps.getProperty("api.key"))
+        }
+
+        debug {
+            buildConfigField("String", "API_KEY", localProps.getProperty("api.key"))
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "1.8"
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
 dependencies {
+    // Kotlin
+    implementation(libs.kotlin.serialization)
 
     // Android Core
     implementation(libs.androidx.core.ktx)
@@ -58,15 +77,20 @@ dependencies {
 
     // Hilt
     implementation(libs.hilt)
+    implementation(libs.hilt.navigation.compose)
     ksp(libs.hilt.compiler)
 
     // Retrofit
     implementation(libs.retrofit)
-    implementation(libs.retrofit.moshi.converter)
+    implementation(libs.retrofit.kotlin.serialization.converter)
 
     // Coil
     implementation(libs.coil)
     implementation(libs.coil.okhttp)
+
+    // Paging
+    implementation(libs.paging)
+    implementation(libs.paging.compose)
 
     // Test
     testImplementation(libs.junit)
