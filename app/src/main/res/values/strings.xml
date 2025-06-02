@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">MoviesList</string>
+    <string name="movie_overview_empty_message">Descrição não fornecida</string>
+    <string name="movies_list_screen_error">Erro ao carregar lista de filmes</string>
+    <string name="movies_list_loading_more_error">Erro ao carregar mais filmes</string>
 </resources>
