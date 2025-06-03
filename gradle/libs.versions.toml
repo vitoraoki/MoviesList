@@ -13,6 +13,7 @@ coil = "3.2.0"
 kotlin-serialization = "1.8.1"
 paging = "3.3.6"
 hilt-navigation-compose = "1.2.0"
+navigation = "2.9.0"
 
 [libraries]
 # Kotlin
@@ -21,6 +22,8 @@ kotlin-serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serial
 # Android Core
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-lifecycle-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleKtx" }
+androidx-navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigation" }
+androidx-navigation-ui = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigation" }
 
 # Compose
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }

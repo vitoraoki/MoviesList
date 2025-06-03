@@ -65,6 +65,8 @@ dependencies {
     // Android Core
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.viewmodel)
+    implementation(libs.androidx.navigation.fragment)
+    implementation(libs.androidx.navigation.ui)
 
     // Compose
     implementation(platform(libs.androidx.compose.bom))
