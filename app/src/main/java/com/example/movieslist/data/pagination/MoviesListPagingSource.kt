@@ -8,7 +8,7 @@ import kotlinx.coroutines.delay
 import javax.inject.Inject
 
 class MoviesListPagingSource @Inject constructor(
-    private val service: MoviesListService
+    private val api: MoviesListService
 ) : PagingSource<Int, MovieResponse>() {
 
     override fun getRefreshKey(state: PagingState<Int, MovieResponse>): Int? {
@@ -21,10 +21,7 @@ class MoviesListPagingSource @Inject constructor(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, MovieResponse> {
         return try {
             val nextPageNumber = params.key ?: 1
-
-            delay(2000)
-
-            val response = service.getNowPlayingMovies(nextPageNumber)
+            val response = api.getNowPlayingMovies(nextPageNumber)
             return LoadResult.Page(
                 data = response.results,
                 prevKey = null,
