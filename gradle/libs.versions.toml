@@ -14,8 +14,11 @@ kotlin-serialization = "1.8.1"
 paging = "3.3.6"
 hilt-navigation-compose = "1.2.0"
 navigation = "2.9.0"
+mockk = "1.14.2"
+coroutines-test = "1.10.2"
 
 [libraries]
+
 # Kotlin
 kotlin-serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlin-serialization" }
 
@@ -53,6 +56,9 @@ paging-compose = { group = "androidx.paging", name = "paging-compose", version.r
 
 # Test
 junit = { group = "junit", name = "junit", version.ref = "junit" }
+mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
+coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutines-test" }
+paging-test = { group = "androidx.paging", name = "paging-testing", version.ref = "paging" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
